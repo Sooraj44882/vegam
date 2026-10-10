@@ -4,7 +4,13 @@ import { useState } from "react";
 function App(){
     const [completed, setCompleted]=useState([false,false,false]);
 
-  //completed={false,false,false};
+  function check(i){
+      setCompleted(completed.map((value,index)=>{
+      return index===i?true : value;
+        })
+      );
+    }
+
   return (
     <div>
       <h1>Vegam</h1>
@@ -15,17 +21,17 @@ function App(){
         title="Learn Node.js"
         description="build the a backend server"
       />
-      <button onClick={()=>{setCompleted([true,completed[1],completed[2]])}}>complete</button>
+      <button onClick={()=>check(0) }>{completed[0] ? "Completed " : "Complete"}</button>
       <Task 
         title="Learn SQL"
         description="study create,read,update,delete"
       />
-      <button onClick={()=>{setCompleted([completed[0],true,completed[2]])}}>complete</button>
+      <button onClick={()=>check(1)}>{completed[1] ? "Completed " : "Complete"}</button>
       <Task
         title="Become God at chess"
         description="practice and learn more"
       />
-      <button onClick={()=>{setCompleted([completed[0],completed[1],true])}}>complete</button>
+      <button onClick={()=>check(2)}>{completed[2] ? "Completed " : "Complete"}</button>
     </div>
   );
 }
