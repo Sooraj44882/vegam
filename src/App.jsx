@@ -1,5 +1,6 @@
 import Task from "./Task";
 import { useState } from "react";
+import Timer from "./Timer";
 
 function App() {
   const [completed, setCompleted] = useState([false, false, false]);
@@ -78,6 +79,7 @@ function App() {
           ))}
         </div>
       </div>
+      <Timer />
     </main>
     </div>
   );
