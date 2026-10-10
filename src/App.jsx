@@ -30,11 +30,20 @@ function App() {
     },
   ];
 
+  function taskCounter() {
+    const done = completed.filter((value) => value === true);
+    return done.length;
+  }
+
   return (
     <div>
       <h1>Vegam</h1>
       <p>A cool app to track the work and build habits</p>
       <p>Start Now</p>
+
+      <h2>
+        Task completed {taskCounter()} / {tasks.length}
+      </h2>
 
       {tasks.map((task, index) => (
         <Task
