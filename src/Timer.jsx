@@ -30,7 +30,7 @@ function Timer() {
   const secs = seconds % 60;
 
   return (
-    <div className="mt-6 max-w-3xl rounded-xl border border-neutral-800 bg-neutral-900 p-5">
+    <div className="mt-6 p-2">
       <h2 className="text-xl font-bold">Focus Timer</h2>
 
       <p className="my-5 text-center text-5xl font-bold text-red-400">
