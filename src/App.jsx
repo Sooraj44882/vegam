@@ -36,14 +36,14 @@ function App() {
       <p>A cool app to track the work and build habits</p>
       <p>Start Now</p>
 
-      {tasks.map((task) => (
-        <div key={task.id}>
-          <h2>{task.title}</h2>
-          <p>{task.description}</p>
-          <button onClick={() => check(task.id - 1)}>
-            {completed[0] ? "Completed " : "Complete"}
-          </button>
-        </div>
+      {tasks.map((task, index) => (
+        <Task
+          key={task.id}
+          title={task.title}
+          description={task.description}
+          completed={completed[index]}
+          onComplete={() => check(index)}
+        />
       ))}
     </div>
   );
