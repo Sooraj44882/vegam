@@ -36,21 +36,35 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 p-6 text-white">
-      <h1 className="text-3xl font-bold">
-        Vega<span className="text-red-400">m</span>
-      </h1>
+    <div className="min-h-screen bg-neutral-950 text-white md:flex">
+      <aside className="border-b border-neutral-800 p-5 md:min-h-screen md:w-56 md:border-b-0 md:border-r">
+        <h1 className="text-2xl font-bold">
+          Vega<span className="text-red-400">m</span>
+        </h1>
 
-      <p className="mt-2 text-neutral-400">
-        Track your work and build good habits :)
-      </p>
+        <nav className="mt-6 flex gap-4 text-sm text-neutral-300 md:flex-col">
+          <a href="#" className="text-red-400">
+            Dashboard
+          </a>
+          <a href="#">My Tasks</a>
+          <a href="#">Focus Timer</a>
+          <a href="#">Settings</a>
+        </nav>
+      </aside>
 
-      <div className="mt-8 rounded-xl bg-neutral-900 p-5">
-        <h2 className="text-xl font-bold">Today's Tasks</h2>
-
-        <p className="mt-2 text-red-400">
-          Completed: {taskCounter()} / {tasks.length}
+      <main className="flex-1 p-6 md:p-10">
+        <h2 className="text-3xl font-bold">Focus. Let lock in</h2>
+        <p className="mt-2 text-neutral-400">
+          Track your work and build good habits :)
         </p>
+
+    <div className="mt-8 max-w-3xl rounded-xl border border-neutral-800 bg-neutral-900 p-5">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-bold">Today's Tasks</h3>
+        <p className="text-red-400">
+          {taskCounter()} / {tasks.length}
+        </p>
+      </div>
 
         <div className="mt-4 space-y-3">
           {tasks.map((task, index) => (
@@ -64,6 +78,7 @@ function App() {
           ))}
         </div>
       </div>
+    </main>
     </div>
   );
 }
