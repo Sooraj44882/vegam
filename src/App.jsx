@@ -2,8 +2,9 @@ import Task from "./Task";
 import { useState } from "react";
 
 function App(){
-    const [count, setCount]=useState(0);
+    const [completed, setCompleted]=useState([false,false,false]);
 
+  //completed={false,false,false};
   return (
     <div>
       <h1>Vegam</h1>
@@ -14,19 +15,17 @@ function App(){
         title="Learn Node.js"
         description="build the a backend server"
       />
-      <button onClick={()=>{setCount(count+1)}}>[]</button>
+      <button onClick={()=>{setCompleted([true,completed[1],completed[2]])}}>complete</button>
       <Task 
         title="Learn SQL"
         description="study create,read,update,delete"
       />
-      <button onClick={()=>{setCount(count+1)}}>[]</button>
+      <button onClick={()=>{setCompleted([completed[0],true,completed[2]])}}>complete</button>
       <Task
         title="Become God at chess"
         description="practice and learn more"
       />
-      <button onClick={()=>{setCount(count+1)}}>[]</button>
-
-    <p>Tasks complete:{count}</p>
+      <button onClick={()=>{setCompleted([completed[0],completed[1],true])}}>complete</button>
     </div>
   );
 }
