@@ -36,24 +36,34 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Vegam</h1>
-      <p>A cool app to track the work and build habits</p>
-      <p>Start Now</p>
+    <div className="min-h-screen bg-neutral-950 p-6 text-white">
+      <h1 className="text-3xl font-bold">
+        Vega<span className="text-red-400">m</span>
+      </h1>
 
-      <h2>
-        Task completed {taskCounter()} / {tasks.length}
-      </h2>
+      <p className="mt-2 text-neutral-400">
+        Track your work and build good habits :)
+      </p>
 
-      {tasks.map((task, index) => (
-        <Task
-          key={task.id}
-          title={task.title}
-          description={task.description}
-          completed={completed[index]}
-          onComplete={() => check(index)}
-        />
-      ))}
+      <div className="mt-8 rounded-xl bg-neutral-900 p-5">
+        <h2 className="text-xl font-bold">Today's Tasks</h2>
+
+        <p className="mt-2 text-red-400">
+          Completed: {taskCounter()} / {tasks.length}
+        </p>
+
+        <div className="mt-4 space-y-3">
+          {tasks.map((task, index) => (
+            <Task
+              key={task.id}
+              title={task.title}
+              description={task.description}
+              completed={completed[index]}
+              onComplete={() => check(index)}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
