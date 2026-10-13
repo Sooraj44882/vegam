@@ -1,4 +1,4 @@
-function Task({ title, description, completed, onComplete }) {
+function Task({ title, description, completed, onComplete, onDelete }) {
   return (
     <div className="rounded-lg border border-neutral-700 p-4">
       <h3
@@ -15,6 +15,12 @@ function Task({ title, description, completed, onComplete }) {
         className="mt-3 rounded-lg bg-red-400 px-4 py-2 text-black hover:bg-red-300 disabled:cursor-not-allowed disabled:bg-neutral-700 disabled:text-white"
       >
         {completed ? "Done " : "Complete"}
+      </button>
+      <button
+        onClick={onDelete}
+        className="ml-2 rounded-lg bg-neutral-800 px-4 py-2 hover:bg-neutral-700"
+      >
+        Delete
       </button>
     </div>
   );

@@ -56,6 +56,10 @@ function App() {
     return tasks.filter((task) => task.completed).length;
   }
 
+  function deleteTask(id) {
+  setTasks(tasks.filter((task) => task.id !== id));
+}
+
   return (
     <div className="min-h-screen bg-neutral-950 text-white md:flex">
       <aside className="flex flex-col border-b border-neutral-800 bg-neutral-950 p-5 md:min-h-screen md:w-64 md:border-b-0 md:border-r">
@@ -147,7 +151,7 @@ function App() {
               </button>
             </form>
 
-            <div className="mt-5 max-h-[420px] space-y-3 overflow-y-auto pr-2">
+            <div className="mt-5 max-h-105 space-y-3 overflow-y-auto pr-2">
               {tasks.map((task) => (
                 <Task
                   key={task.id}
@@ -155,6 +159,7 @@ function App() {
                   description={task.description}
                   completed={task.completed}
                   onComplete={() => check(task.id)}
+                  onDelete={()=>{deleteTask(task.id)}}
                 />
               ))}
             </div>
