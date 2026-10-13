@@ -1,6 +1,6 @@
-import Task from "./Task";
+import Task from "./Components/Task";
 import { useState } from "react";
-import Timer from "./Timer";
+import Timer from "./Components/Timer";
 
 import { House, CheckSquare, Timer as TimerIcon, Settings } from "lucide-react";
 
