@@ -1,8 +1,8 @@
 import Task from "./Components/Task";
 import { useState } from "react";
 import Timer from "./Components/Timer";
-
-import { House, CheckSquare, Timer as TimerIcon, Settings } from "lucide-react";
+import Sidebar from "./Components/Sidebar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -57,50 +57,13 @@ function App() {
   }
 
   function deleteTask(id) {
-  setTasks(tasks.filter((task) => task.id !== id));
-}
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
 
   return (
+    <BrowserRouter>
     <div className="min-h-screen bg-neutral-950 text-white md:flex">
-      <aside className="flex flex-col border-b border-neutral-800 bg-neutral-950 p-5 md:min-h-screen md:w-64 md:border-b-0 md:border-r">
-        <h1 className="text-2xl font-bold tracking-tight">
-          Vega<span className="text-red-400">m</span>
-        </h1>
-
-        <nav className="mt-10 space-y-2">
-          <a
-            href="#dashboard"
-            className="flex items-center gap-3 rounded-xl bg-red-400 px-4 py-3 font-medium text-black"
-          >
-            <House size={19} />
-            Dashboard
-          </a>
-
-          <a
-            href="#tasks"
-            className="flex items-center gap-3 rounded-xl px-4 py-3 text-neutral-400 transition hover:bg-neutral-800 hover:text-white"
-          >
-            <CheckSquare size={19} />
-            My Tasks
-          </a>
-
-          <a
-            href="#focus-timer"
-            className="flex items-center gap-3 rounded-xl px-4 py-3 text-neutral-400 transition hover:bg-neutral-800 hover:text-white"
-          >
-            <TimerIcon size={19} />
-            Focus Timer
-          </a>
-
-          <a
-            href="#settings"
-            className="flex items-center gap-3 rounded-xl px-4 py-3 text-neutral-400 transition hover:bg-neutral-800 hover:text-white"
-          >
-            <Settings size={19} />
-            Settings
-          </a>
-        </nav>
-      </aside>
+      <Sidebar/>
 
       <main id="dashboard" className="min-w-0 flex-1 p-5 md:p-8">
         <h2 className="text-3xl font-bold">Focus. Let’s lock in.</h2>
@@ -159,7 +122,9 @@ function App() {
                   description={task.description}
                   completed={task.completed}
                   onComplete={() => check(task.id)}
-                  onDelete={()=>{deleteTask(task.id)}}
+                  onDelete={() => {
+                    deleteTask(task.id);
+                  }}
                 />
               ))}
             </div>
@@ -203,6 +168,7 @@ function App() {
         </div>
       </main>
     </div>
+    </BrowserRouter>
   );
 }
 
