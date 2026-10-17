@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Sidebar from "./Components/Sidebar";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import MyTasks from "./pages/MyTasks";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -43,19 +44,32 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className="min-h-screen bg-neutral-950 text-white md:flex">
-      <Sidebar/>
+      <div className="min-h-screen bg-neutral-950 text-white md:flex">
+        <Sidebar />
 
-    <Dashboard
-      taskCounter={taskCounter}
-      tasks={tasks}
-      check={check}
-      deleteTask={deleteTask}
-      setTasks={setTasks}
-    
-    />
-      
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Dashboard
+                taskCounter={taskCounter}
+                tasks={tasks}
+                check={check}
+                deleteTask={deleteTask}
+                setTasks={setTasks}
+              />
+            }
+          />
+
+          <Route
+            path="/tasks"
+            element={
+              <MyTasks tasks={tasks} check={check} deleteTask={deleteTask} />
+            }
+          />
+          
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
